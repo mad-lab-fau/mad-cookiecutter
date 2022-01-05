@@ -1,0 +1,25 @@
+stages:
+  - testing
+
+.python_base: &python_base
+  tags:
+    - docker
+  image: python:3.8
+  before_script:
+    - git config --global credential.helper store
+    - echo "https://gitlab-ci-token:${CI_JOB_TOKEN}@mad-srv.informatik.uni-erlangen.de" > ~/.git-credentials
+    - pip install pip --upgrade
+    - pip install poetry
+    - poetry install
+
+test:
+  stage: testing
+  <<: *python_base
+  script:
+    - poetry run poe test
+
+lint:
+  stage: testing
+  <<: *python_base
+  script:
+    - poetry run poe check

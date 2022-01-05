@@ -41,6 +41,7 @@ It contains some basic information on how to get started.
 - Opinionated folder structure for data and experiments
 - Automatic setup of formatting and lint tools (`black`, `isort`, `prospector`)
 - Support for either `nbstripout` or `jupytext` to handle notebooks in git
+- Basic CI configuration for github and the mad-srv gitlab
 - Commandline tools using `poethepoet`:
     - Helper to create boilerplate for individual experiments
     - Helper to manage project-specific jupyter kernels
@@ -67,6 +68,7 @@ poetry install
 - Dependency and venv management using `poetry`
 - Automatic setup of formatting and lint tools (`black`, `isort`, `prospector`)
 - Basic docstructure and templates
+- Basic CI configuration for github and the mad-srv gitlab
 
 
 ## Advanced Usage
