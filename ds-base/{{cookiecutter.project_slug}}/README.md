@@ -21,6 +21,8 @@
 |
 ├── tests  # Unit tests for the `{{cookiecutter.project_slug}}` library
 |
+├── data  # The main data folder. This is ignored in the `.gitignore` by default.
+|
 |   pyproject.toml  # The required python dependencies for the project
 |   poetry.lock  # The frozen python dependencies to reproduce exact results
 |
