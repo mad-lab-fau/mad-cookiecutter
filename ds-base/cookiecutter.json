@@ -1,10 +1,11 @@
 {
     "full_name": "",
     "email": "",
-    "project_slug": "",
+    "project_name": "MyProject",
+    "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
     "project_short_description": "",
     "version": "0.1.0",
     "python_version": "^3.7.1",
-    "venv_in_folder": ["no", "yes"],
+    "force_venv_in_folder": ["no", "yes"],
     "ipympl_version": "latest"
 }

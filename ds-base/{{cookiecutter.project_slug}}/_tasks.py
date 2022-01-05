@@ -15,13 +15,7 @@ def update_version_strings(file_path, new_version):
     with open(file_path, "r+") as f:
         content = f.read()
         f.seek(0)
-        f.write(
-            re.sub(
-                version_regex,
-                lambda match: '{}{}"'.format(match.group(1), new_version),
-                content,
-            )
-        )
+        f.write(re.sub(version_regex, lambda match: '{}{}"'.format(match.group(1), new_version), content,))
         f.truncate()
 
 
@@ -52,5 +46,3 @@ def task_new_experiment():
         path = HERE / "experiments" / name / f
         path.parent.mkdir(exist_ok=True, parents=True)
         path.touch(exist_ok=True)
-
-

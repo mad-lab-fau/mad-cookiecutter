@@ -4,17 +4,17 @@ from pathlib import Path
 import subprocess
 
 
-
 def configure_venv_folder():
-    if "{{ cookiecutter.venv_in_folder }}" == "yes":
+    if "{{ cookiecutter.force_venv_in_folder }}" == "yes":
         subprocess.run(["poetry", "config", "virtualenvs.in-project", "true", "--local"])
+
 
 def install_default_deps():
     """Install some basic deps.
     
     We do that in the hook file to get the latest version for every new project.
     """
-    dev_deps =  ["black", "poethepoet", "pytest", "pytest-cov", "prospector", "ipykernel"]
+    dev_deps = ["black", "poethepoet", "pytest", "pytest-cov", "prospector", "ipykernel"]
 
     if "{{cookiecutter.ipympl_version}}" == "latest":
         dev_deps.append("ipympl@latest")
@@ -22,15 +22,10 @@ def install_default_deps():
     subprocess.run(["poetry", "add", "--dev", *dev_deps])
 
 
-def init_git_repo():
-    subprocess.run(["git", "init"])
-
-
-
 if __name__ == "__main__":
     # Add custom configs
     configure_venv_folder()
-    # Update all dependencies
-    install_default_deps()
     # Run Poetry check
     subprocess.run(["poetry", "check"])
+    # Update all dependencies
+    install_default_deps()

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-__version__ = '{{cookiecutter.version}}'
+__version__ = "{{cookiecutter.version}}"
+
 
 def conf_rel_path():
     """Configure relative path imports for the experiments folder."""
