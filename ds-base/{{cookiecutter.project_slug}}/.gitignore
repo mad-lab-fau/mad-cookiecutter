@@ -227,3 +227,8 @@ $RECYCLE.BIN/
 
 # The data folder. Remove that line, if you want to store your data in git as well.
 data
+
+{% if cookiecutter.notebook_handling == "jupytext" %}
+# We are using jupytext and hence do not want to commit the notebooks
+experiments/**/*.ipynb
+{% endif %}

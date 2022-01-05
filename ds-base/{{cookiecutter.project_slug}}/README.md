@@ -69,7 +69,24 @@ poe conf_jupyter
 Afterwards a new kernel called `{{cookiecutter.project_slug}}` should be available in the jupyter lab / jupyter notebook interface.
 Use that kernel for all notebooks related to this project.
 
-All jupyter notebooks go into the `notebooks` subfolder of the respective experiment.
+{% if cookiecutter.notebook_handling == "nbstripout" %}
+You should also enable nbstripout, so that only clean versions of your notebooks get committed to git
+
+```
+poe conf_nbstripout
+```
+{% elif cookiecutter.notebook_handling == "jupytext" %}
+You should also install the [jupytext extension](https://jupytext.readthedocs.io/en/latest/install.html) for your jupyter lab.
+This will automatically convert all notebooks to Python files that can be added to git.
+All the jupyter notebooks are ignored by default.
+Therefore, if you first cloned that repository or modified a notebook without using the jupytext extension, you need to run the following command to do the conversion:
+
+```
+poe sync_notebooks
+```
+{% endif %}
+
+All jupyter notebooks should go into the `notebooks` subfolder of the respective experiment.
 To make best use of the folder structure, the parent folder of each notebook should be added to the import path.
 This can be done by adding the following lines to your first notebook cell:
 

@@ -42,6 +42,11 @@ multi_line_output = 3
 line_length = 120
 skip_gitignore = true
 
+{% if cookiecutter.notebook_handling == "jupytext" %}
+[tool.jupytext]
+formats = "ipynb,py:percent"
+{% endif %}
+
 [tool.poe.tasks]
 _format_black = "black ."
 _format_isort = "isort ."
@@ -52,6 +57,8 @@ _check_isort = "isort . --check"
 check = { sequence = ["_check_black", "_check_isort", "lint"], help = "Check all potential format and linting issues." }
 test = { cmd = "pytest --cov=tpcp --cov-report=term-missing --cov-report=xml", help = "Run Pytest with coverage." }
 version = { script = "_tasks:task_update_version()" }
-conf_jupyter = { cmd = "python -m ipykernel install --user --name {{cookiecutter.project_slug}}", help = "Add a new jupyter kernel for the project."}
+conf_jupyter = { cmd = "python -m ipykernel install --user --name {{cookiecutter.project_slug}}", help = "Add a new jupyter kernel for the project." }
+{% if cookiecutter.notebook_handling == "nbstripout" %}conf_nbstripout = { cmd = "nbstripout --install", help = "Enable the nbstripout pre commit hook."}
+{% elif cookiecutter.notebook_handling == "jupytext" %}sync_notebooks = { cmd = "jupytext --sync experiments/**/*.ipynb --set-kernel={{cookiecutter.project_slug}}", help = "Manually sync all notebooks with their jupytext counter part."}{% endif %}
 remove_jupyter = { cmd = "jupyter kernelspec uninstall {{cookiecutter.project_slug}}", help = "Remove the project specific jupyter kernel."}
 experiment = { script = "_tasks:task_new_experiment()", help = "Create the boilerplate for a new experiment in the experiment subfolder."}

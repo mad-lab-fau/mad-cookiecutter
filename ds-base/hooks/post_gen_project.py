@@ -19,7 +19,12 @@ def install_default_deps():
     if "{{cookiecutter.ipympl_version}}" == "latest":
         dev_deps.append("ipympl@latest")
 
-    subprocess.run(["poetry", "add", "--dev", *dev_deps])
+    if "{{cookiecutter.notebook_handling}}" == "nbstripout":
+        dev_deps.append("nbstripout")
+    elif "{{cookiecutter.notebook_handling}}" == "jupytext":
+        dev_deps.append("jupytext")
+
+    subprocess.run(["poetry", "add", "--lock", "--dev", *dev_deps])
 
 
 if __name__ == "__main__":
