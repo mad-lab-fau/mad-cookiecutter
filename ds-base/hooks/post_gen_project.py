@@ -28,6 +28,8 @@ def install_default_deps():
 
 
 if __name__ == "__main__":
+    # Create data folder (We need to do that here, because the folder is ignored by git)
+    Path("./data").mkdir()
     # Add custom configs
     configure_venv_folder()
     # Run Poetry check
