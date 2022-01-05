@@ -79,6 +79,10 @@ conf_rel_path()
 This allows to then import the helper and the script module belonging to a specific experiment as follows:
 
 ```
+# Optional: Auto reloads the helper and the main {{cookiecutter.project_slug}} module
+%load_ext autoreload
+%autoreload 2
+
 import helper
 # or
 from helper import ...
