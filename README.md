@@ -22,6 +22,8 @@ First install:
 - [poetry](https://python-poetry.org/docs/#installation)
 - [poethepoet](https://github.com/nat-n/poethepoet) in your global python env (`pip install poethepoet`)
 
+Then run:
+
 ```
 cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="ds-base"
 cd my_project_name
@@ -42,6 +44,29 @@ It contains some basic information on how to get started.
 - Commandline tools using `poethepoet`:
     - Helper to create boilerplate for individual experiments
     - Helper to manage project-specific jupyter kernels
+
+## Python-Package: `py-package`
+
+First install:
+
+- [poetry](https://python-poetry.org/docs/#installation)
+- [poethepoet](https://github.com/nat-n/poethepoet) in your global python env (`pip install poethepoet`)
+
+Then run:
+
+```
+cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="py-package"
+cd my_project_name
+git init
+git commit -A -m'Initialised project based on mad-py-package template'
+poetry install
+```
+
+### Features
+
+- Dependency and venv management using `poetry`
+- Automatic setup of formatting and lint tools (`black`, `isort`, `prospector`)
+- Basic docstructure and templates
 
 
 ## Advanced Usage

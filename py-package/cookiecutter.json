@@ -1,0 +1,11 @@
+{
+    "full_name": "",
+    "email": "",
+    "project_name": "MyProject",
+    "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "project_repo": "https://github.com/mad-lab-fau/{{ cookiecutter.project_slug }}",
+    "project_short_description": "",
+    "version": "0.1.0",
+    "python_version": "^3.7.1",
+    "force_venv_in_folder": ["no", "yes"]
+}
