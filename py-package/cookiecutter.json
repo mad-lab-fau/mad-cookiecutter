@@ -7,5 +7,6 @@
     "project_short_description": "",
     "version": "0.1.0",
     "python_version": "^3.7.1",
-    "force_venv_in_folder": ["no", "yes"]
+    "force_venv_in_folder": ["no", "yes"],
+    "_copy_without_render": ["docs/templates/*"]
 }
