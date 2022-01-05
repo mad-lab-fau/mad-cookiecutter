@@ -2,11 +2,23 @@
 
 A set of templates that can be used to quickly get started with a new project.
 
-## Getting started
+For all templates you need to install [cookiecutter](https://github.com/cookiecutter/cookiecutter/tree/master):
+
+```
+pip install cookiecutter
+```
+
+Then follow the instructions for the template you want ot use
+
+## Datascience Project: `ds-base`
+
+A base template for a typical datascience project.
+This should be a good fit for a typical thesis project.
+
+### Usage
 
 First install:
 
-- [cookiecutter](https://github.com/cookiecutter/cookiecutter/tree/master): `pip install cookiecutter`
 - [poetry](https://python-poetry.org/docs/#installation)
 - [poethepoet](https://github.com/nat-n/poethepoet) in your global python env (`pip install poethepoet`)
 
@@ -18,12 +30,19 @@ git commit -A -m'Initialised project based on mad-ds-base template'
 poetry install
 ```
 
-_`ds-base` is the name of the specific template can be swapped out with a different subfolder name of this repo._
-
 After creating a new project, check the README of your new project file.
 It contains some basic information on how to get started.
 
-If you have any questions or suggestions let us know in the issues!
+### Features
+
+- Dependency and venv management using `poetry`
+- Opinionated folder structure for data and experiments
+- Automatic setup of formatting and lint tools (`black`, `isort`, `prospector`)
+- Support for either `nbstripout` or `jupytext` to handle notebooks in git
+- Commandline tools using `poethepoet`:
+    - Helper to create boilerplate for individual experiments
+    - Helper to manage project-specific jupyter kernels
+
 
 ## Advanced Usage
 
