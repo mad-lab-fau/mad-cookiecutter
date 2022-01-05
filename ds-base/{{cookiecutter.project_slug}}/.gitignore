@@ -225,6 +225,15 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/jupyternotebooks,linux,macos,python,windows
 
+# Virtual env
+.venv
+
+# vscode (full)
+.vscode
+
+# PyCharm
+.idea
+
 # The data folder. Remove that line, if you want to store your data in git as well.
 data
 
