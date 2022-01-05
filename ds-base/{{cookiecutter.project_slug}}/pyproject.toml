@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "{{cookiecutter.project_slug}}"
 version = "0.1.0"
-description = "{{cookiecutter.project_description}}"
-authors = ["{{cookiecutter.full_name}} <{{cookiecutter.author_email}}>"]
+description = "{{cookiecutter.project_short_description}}"
+authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
 license = "MIT"
 readme = "README.md"
 
@@ -52,4 +52,6 @@ _check_isort = "isort . --check"
 check = { sequence = ["_check_black", "_check_isort", "lint"], help = "Check all potential format and linting issues." }
 test = { cmd = "pytest --cov=tpcp --cov-report=term-missing --cov-report=xml", help = "Run Pytest with coverage." }
 version = { script = "_tasks:task_update_version()" }
-conf_jupyter = "python -m ipykernel install --user --name {{cookiecutter.project_slug}}"
+conf_jupyter = { cmd = "python -m ipykernel install --user --name {{cookiecutter.project_slug}}", help = "Add a new jupyter kernel for the project."}
+remove_jupyter = { cmd = "jupyter kernelspec uninstall {{cookiecutter.project_slug}}", help = "Remove the project specific jupyter kernel."}
+experiment = { script = "_tasks:task_new_experiment()", help = "Create the boilerplate for a new experiment in the experiment subfolder."}

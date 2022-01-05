@@ -6,7 +6,7 @@ import subprocess
 
 
 def configure_venv_folder():
-    if "{{ cookiecutter.venv_in_folder }}" == "y":
+    if "{{ cookiecutter.venv_in_folder }}" == "yes":
         subprocess.run(["poetry", "config", "virtualenvs.in-project", "true", "--local"])
 
 def install_default_deps():
@@ -14,11 +14,16 @@ def install_default_deps():
     
     We do that in the hook file to get the latest version for every new project.
     """
-    if "{{cookiecutter.ipympl_version}}" == "latest":
-        subprocess.run(["poetry", "add", "--dev", "ipympl@latest"])
-
     dev_deps =  ["black", "poethepoet", "pytest", "pytest-cov", "prospector", "ipykernel"]
+
+    if "{{cookiecutter.ipympl_version}}" == "latest":
+        dev_deps.append("ipympl@latest")
+
     subprocess.run(["poetry", "add", "--dev", *dev_deps])
+
+
+def init_git_repo():
+    subprocess.run(["git", "init"])
 
 
 

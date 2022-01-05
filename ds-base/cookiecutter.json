@@ -1,10 +1,10 @@
 {
     "full_name": "",
     "email": "",
-    "project_name": "",
+    "project_slug": "",
     "project_short_description": "",
     "version": "0.1.0",
     "python_version": "^3.7.1",
-    "venv_in_folder": ["y", "n"],
+    "venv_in_folder": ["no", "yes"],
     "ipympl_version": "latest"
 }
