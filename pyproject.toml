@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "mad-cookiecutter"
+version = "0.1.0"
+description = "Base Project templates for the MaD-Lab"
+authors = ["Arne Küderle <a.kuederle@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+cookiecutter = "^1.7.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
