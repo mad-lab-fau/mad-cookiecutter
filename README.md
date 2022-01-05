@@ -12,6 +12,10 @@ First install:
 
 ```
 cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="ds-base"
+cd my_project_name
+git init
+git commit -A -m'Initialised project based on mad-ds-base template'
+poetry install
 ```
 
 _`ds-base` is the name of the specific template can be swapped out with a different subfolder name of this repo._
