@@ -63,6 +63,9 @@ git commit -A -m'Initialised project based on mad-py-package template'
 poetry install
 ```
 
+Note, that you should specify a repo URL, even if you did not have a git repo yet.
+At least specify `github.com` or `mad-srv.informatik.uni-erlangen.de` as this information is used to add specific configs.
+
 ### Features
 
 - Dependency and venv management using `poetry`
