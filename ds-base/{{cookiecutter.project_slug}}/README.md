@@ -91,6 +91,10 @@ To make best use of the folder structure, the parent folder of each notebook sho
 This can be done by adding the following lines to your first notebook cell:
 
 ```python
+# Optional: Auto reloads the helper and the main {{cookiecutter.project_slug}} module
+%load_ext autoreload
+%autoreload 2
+
 from {{cookiecutter.project_slug}} import conf_rel_path
 conf_rel_path()
 ```
@@ -98,10 +102,6 @@ conf_rel_path()
 This allows to then import the helper and the script module belonging to a specific experiment as follows:
 
 ```
-# Optional: Auto reloads the helper and the main {{cookiecutter.project_slug}} module
-%load_ext autoreload
-%autoreload 2
-
 import helper
 # or
 from helper import ...
