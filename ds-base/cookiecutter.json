@@ -1,12 +1,13 @@
 {
-    "full_name": "",
-    "email": "",
     "project_name": "MyProject",
     "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "full_name": "",
+    "email": "",
     "project_short_description": "",
     "version": "0.1.0",
     "python_version": "^3.7.1",
     "force_venv_in_folder": ["no", "yes"],
     "ipympl_version": "latest",
-    "notebook_handling": ["None", "nbstripout", "jupytext"]
+    "notebook_handling": ["None", "nbstripout", "jupytext"],
+    "_copy_without_render": [".github/*"]
 }
