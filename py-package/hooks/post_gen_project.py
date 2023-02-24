@@ -14,7 +14,7 @@ def install_default_deps():
     
     We do that in the hook file to get the latest version for every new project.
     """
-    dev_deps = ["black", "poethepoet", "pytest", "pytest-cov", "prospector", "ipykernel"]
+    dev_deps = ["black", "poethepoet", "pytest", "pytest-cov", "ruff"]
     doc_deps = ["numpydoc", "sphinx", "sphinx-gallery", "recommonmark", "memory-profiler", "matplotlib", "toml"]
 
     subprocess.run(["poetry", "add", "--lock", "--dev", *dev_deps, *doc_deps])

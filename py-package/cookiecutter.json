@@ -1,8 +1,8 @@
 {
-    "full_name": "",
-    "email": "",
     "project_name": "MyProject",
     "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "your_name": "",
+    "email": "",
     "project_repo": "https://github.com/mad-lab-fau/{{ cookiecutter.project_slug }}",
     "project_short_description": "",
     "version": "0.1.0",
