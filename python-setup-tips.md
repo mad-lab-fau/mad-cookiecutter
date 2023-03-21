@@ -16,11 +16,10 @@ Further, when working with multiple projects, you will realize that you might ne
 
 This means you should have a solid strategy for managing multiple Python versions and Python interpreters.
 
-<div class="alert alert-info">
-  <strong>Note:</strong> In the past we recommended to use conda to manage Python versions.
-  However, over the past years the default Python installation has improved significantly and you rarly run into issues with scientific packages anymore (which was the main reason to use conda in the past).
-  Feel free to use conda if you prefer it, but the new way is more lightweight and easier to maintain in our opinion.
-</div>
+> **Note**
+> In the past we recommended to use conda to manage Python versions.
+> However, over the past years the default Python installation has improved significantly and you rarly run into issues with scientific packages anymore (which was the main reason to use conda in the past).
+> Feel free to use conda if you prefer it, but the new way is more lightweight and easier to maintain in our opinion.
 
 ## Linux and MacOS
 
@@ -101,9 +100,8 @@ Hence, we recommend using [pipx](https://pypa.github.io/pipx/) to install these 
 We use poetry to manage our dependencies and to create our Python packages.
 In addition, we use `poethepoet` (https://github.com/nat-n/poethepoet) as simple taskrunner withing projects.
 
-<div class="alert alert-info">
-  <strong>Note:</strong> Make sure you use poetry>=1.3 for everything we show below.
-</div>
+> **Warning**
+> Make sure you use poetry>=1.3 for everything we show below.
 
 ### Installation (using pipx)
 
