@@ -2,13 +2,13 @@
 
 A set of templates that can be used to quickly get started with a new project.
 
-For all templates you need to install [cookiecutter](https://github.com/cookiecutter/cookiecutter/tree/master):
+For all templates you need to install [cookiecutter](https://github.com/cookiecutter/cookiecutter/tree/master) or use `pipx run cookiecutter`:
 
-```
-pip install cookiecutter
-```
+Then follow the instructions for the template you want to use.
 
-Then follow the instructions for the template you want to use
+> **Note**
+> We highly recommend reading our general Python setup guide before using any of the templates.
+> [python-setup-tips.md](https://github.com/mad-lab-fau/mad-cookiecutter/blob/main/python-setup-tips.md)
 
 ## Datascience Project: `ds-base`
 

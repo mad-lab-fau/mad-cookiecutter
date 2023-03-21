@@ -222,6 +222,25 @@ Then you can launch this jupterlab version using the `jupyter_ipympl_0_7` comman
 jupyter_ipympl_0_7 lab
 ```
 
+## Other global commands
+
+Below some other global commands that might be useful.
+
+Black (auto code formatter):
+    
+```
+pipx install black
+```
+
+In case you don't use a command often enough to warrant a global installation, you can also use `pipx run` to run a command in a temporary environment:
+
+
+For example: Cookiecutter (project template generator):
+    
+```
+pipx run cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="ds-base"
+```
+
 ## Global Python Environments
 
 Sometimes you need global Python environments that are not bound to any projects.
