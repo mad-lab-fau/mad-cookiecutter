@@ -41,6 +41,8 @@ def validate_project_slug():
 
 
 if __name__ == "__main__":
+    # Validate project slug
+    validate_project_slug()
     # Create data folder (We need to do that here, because the folder is ignored by git)
     Path("./data").mkdir()
     # Add custom configs
