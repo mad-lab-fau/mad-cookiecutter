@@ -39,10 +39,18 @@ def validate_project_slug():
             "A valid Python identifier is a non-empty string of letters, digits, and underscores."
         )
 
+def configure_python_env():
+    """Configure the Python environment for poetry."""
+    python_path = "{{ cookiecutter.python_path }}"
+    if python_path != "default":
+        subprocess.run(["poetry", "env", "use", python_path])
+
 
 if __name__ == "__main__":
     # Validate project slug
     validate_project_slug()
+    # Configure Python environment
+    configure_python_env()
     # Create data folder (We need to do that here, because the folder is ignored by git)
     Path("./data").mkdir()
     # Add custom configs

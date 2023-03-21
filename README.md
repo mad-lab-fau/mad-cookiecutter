@@ -22,10 +22,37 @@ First install:
 - [poetry](https://python-poetry.org/docs/#installation)
 - [poethepoet](https://github.com/nat-n/poethepoet) in your global python env (`pip install poethepoet`)
 
+Then find the Python executable you want to use for your project.
+
+When using pyenv, you can use:
+
+```bash
+# For example for Python 3.8
+echo $(pyenv shell 3.8; pyenv which python)
+```
+
+On Windows 9using PowerShell and the `py` launcher:
+
+```powershell
+# For example for Python 3.8
+echo $(py -3.8 -c 'import sys; print(sys.executable)')
+```
+
+When using conda, activate the environment of your base interpreter and run:
+
+```bash
+python -c 'import sys; print(sys.executable)'
+```
+
+Copy the full path for the next step!
+
+
 Then run:
 
-```
+```bash
 cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="ds-base"
+# Awnser all the prompts
+# For python_path, use the path you copied in the previous step
 cd my_project_name
 git init
 git commit -A -m'Initialised project based on mad-ds-base template'
