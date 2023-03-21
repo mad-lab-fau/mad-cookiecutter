@@ -31,7 +31,7 @@ When using pyenv, you can use:
 echo $(pyenv shell 3.8; pyenv which python)
 ```
 
-On Windows 9using PowerShell and the `py` launcher:
+On Windows using PowerShell and the `py` launcher:
 
 ```powershell
 # For example for Python 3.8
@@ -51,7 +51,7 @@ Then run:
 
 ```bash
 cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="ds-base"
-# Awnser all the prompts
+# Answer all the prompts
 # For python_path, use the path you copied in the previous step
 cd my_project_name
 git init
@@ -90,7 +90,7 @@ When using pyenv, you can use:
 echo $(pyenv shell 3.8; pyenv which python)
 ```
 
-On Windows 9using PowerShell and the `py` launcher:
+On Windows using PowerShell and the `py` launcher:
 
 ```powershell
 # For example for Python 3.8
@@ -110,7 +110,7 @@ Then run:
 
 ```bash
 cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="py-package"
-# Awnser all the prompts
+# Answer all the prompts
 # For python_path, use the path you copied in the previous step
 cd my_project_name
 git init
