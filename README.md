@@ -8,7 +8,7 @@ For all templates you need to install [cookiecutter](https://github.com/cookiecu
 pip install cookiecutter
 ```
 
-Then follow the instructions for the template you want ot use
+Then follow the instructions for the template you want to use
 
 ## Datascience Project: `ds-base`
 
@@ -38,8 +38,9 @@ It contains some basic information on how to get started.
 ### Features
 
 - Dependency and venv management using `poetry`
+- Installable core package for your algorithms
 - Opinionated folder structure for data and experiments
-- Automatic setup of formatting and lint tools (`black`, `isort`, `prospector`)
+- Automatic setup of formatting and lint tools (`black`, `ruff`)
 - Support for either `nbstripout` or `jupytext` to handle notebooks in git
 - Basic CI configuration for github and the mad-srv gitlab
 - Commandline tools using `poethepoet`:
@@ -69,7 +70,7 @@ At least specify `github.com` or `mad-srv.informatik.uni-erlangen.de` as this in
 ### Features
 
 - Dependency and venv management using `poetry`
-- Automatic setup of formatting and lint tools (`black`, `isort`, `prospector`)
+- Automatic setup of formatting and lint tools (`black`, `ruff`)
 - Basic docstructure and templates
 - Basic CI configuration for github and the mad-srv gitlab
 
