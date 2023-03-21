@@ -90,6 +90,18 @@ poetry env use $(py -3.8.5 -c 'import sys; print(sys.executable)')```
 
 You might need to remove existing venvs of your project first and then run `poetry install` again.
 
+## Which Python Version to Use?
+
+When installing Python or starting a new project, it might be tempting to use the latest Python version.
+However, in particular in the scientific community, it is often the case that packages are not yet compatible with the latest Python version at release, and it can take some time (sometimes years) until they are.
+Hence, double check that the packages you want to use are compatible with the Python version you want to use.
+At the time of writing (Spring 2023), we would recommend Python 3.9.
+
+When developing a package that you expect others to use, use the oldest Python version you can easily support.
+At the time of writing (Spring 2023), this is probably Python 3.8.
+This way, users of your package don't need to upgrade their Python version to use your package.
+However, make sure you test your package for all Python versions you support (ideally using some automated CI pipeline).
+
 # Global Tooling
 
 Some Python based tools are useful to have installed globally on your system and not duplicated in each project (or you want to have a global version in addition to a project specific version).
