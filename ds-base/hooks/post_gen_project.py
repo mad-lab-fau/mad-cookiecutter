@@ -11,10 +11,10 @@ def configure_venv_folder():
 
 def install_default_deps():
     """Install some basic deps.
-    
+
     We do that in the hook file to get the latest version for every new project.
     """
-    dev_deps = ["black", "poethepoet", "pytest", "pytest-cov", "prospector", "ipykernel"]
+    dev_deps = ["black", "poethepoet", "pytest", "pytest-cov", "ipykernel", "ruff"]
 
     if "{{cookiecutter.ipympl_version}}" == "latest":
         dev_deps.append("ipympl@latest")
@@ -24,7 +24,20 @@ def install_default_deps():
     elif "{{cookiecutter.notebook_handling}}" == "jupytext":
         dev_deps.append("jupytext")
 
-    subprocess.run(["poetry", "add", "--lock", "--dev", *dev_deps])
+    subprocess.run(["poetry", "add", "--lock", "--group", "dev", *dev_deps])
+
+
+def validate_project_slug():
+    """Validate the project slug.
+
+    We do that in the hook file to get the latest version for every new project.
+    """
+    project_slug = "{{ cookiecutter.project_slug }}"
+    if not project_slug.isidentifier():
+        raise ValueError(
+            f"Project slug '{project_slug}' is not a valid Python identifier. "
+            "A valid Python identifier is a non-empty string of letters, digits, and underscores."
+        )
 
 
 if __name__ == "__main__":
