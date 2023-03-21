@@ -1,6 +1,6 @@
 {
     "project_name": "MyProject",
-    "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '_') }}",
     "your_name": "",
     "email": "",
     "project_repo": "https://github.com/mad-lab-fau/{{ cookiecutter.project_slug }}",
