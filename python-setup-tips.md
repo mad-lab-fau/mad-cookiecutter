@@ -1,5 +1,8 @@
 # Python Setup Tips (Spring 2023)
 
+> **Note**
+> This is an oppinioated guide assuming basic knowledge of Python and the command line.
+> Many recommendations also assume that you are planning to work with multiple large Python projects and might be overkill, for very simple Python setups.
 ## Dependency Management
 
 Dependency management (i.e. keeping track of which packages are required for your project) is extremely important to ensure reusability and reproducibility of your code. 
@@ -18,7 +21,7 @@ This means you should have a solid strategy for managing multiple Python version
 
 > **Note**
 > In the past we recommended to use conda to manage Python versions.
-> However, over the past years the default Python installation has improved significantly and you rarly run into issues with scientific packages anymore (which was the main reason to use conda in the past).
+> However, over the past years the default Python installation has improved significantly and you rarely run into issues with scientific packages any more (which was the main reason to use conda in the past).
 > Feel free to use conda if you prefer it, but the new way is more lightweight and easier to maintain in our opinion.
 
 ## Linux and MacOS

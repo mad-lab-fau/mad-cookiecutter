@@ -20,7 +20,7 @@ This should be a good fit for a typical thesis project.
 First install:
 
 - [poetry](https://python-poetry.org/docs/#installation)
-- [poethepoet](https://github.com/nat-n/poethepoet) in your global python env (`pip install poethepoet`)
+- [poethepoet](https://github.com/nat-n/poethepoet)
 
 Then find the Python executable you want to use for your project.
 
