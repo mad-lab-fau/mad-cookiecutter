@@ -22,4 +22,4 @@ lint:
   stage: testing
   <<: *python_base
   script:
-    - poetry run poe check
+    - poetry run poe ci_check

@@ -109,14 +109,14 @@ from helper import ...
 
 ### Format and Linting
 
-To ensure consistent code structure this project uses prospector, black, and isort to automatically check the code format.
+To ensure consistent code structure this project uses prospector, black, and ruff to automatically check (and fix) the code format.
 
 ```
-poe format  # runs black and isort
-poe lint # runs prospector
+poe format  # runs black and ruff with the autofix flag
+poe lint # runs ruff without autofix (will show issues that can not automatically be fixed)
 ```
 
-If you want to check if all code follows the code guidelines, run `poe check`.
+If you want to check if all code follows the code guidelines, run `poe ci_check`.
 This can be useful in the CI context
 
 
