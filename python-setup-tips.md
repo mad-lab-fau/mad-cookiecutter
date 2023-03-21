@@ -94,14 +94,14 @@ You might need to remove existing venvs of your project first and then run `poet
 
 Some Python based tools are useful to have installed globally on your system and not duplicated in each project (or you want to have a global version in addition to a project specific version).
 
-When these tools don't have a dedicated installer, and you just install them using `pip` in a single global Python environment, you might run into problems when these tools run into dependecy conflicts between themselves or with other tools you have installed globally.
+When these tools don't have a dedicated installer, and you just install them using `pip` in a single global Python environment, you might run into problems when these tools run into dependency conflicts between themselves or with other tools you have installed globally.
 
 Hence, we recommend using [pipx](https://pypa.github.io/pipx/) to install these tools.
 
 ## Poetry
 
 We use poetry to manage our dependencies and to create our Python packages.
-In addition, we use `poethepoet` (https://github.com/nat-n/poethepoet) as simple taskrunner withing projects.
+In addition, we use `poethepoet` (https://github.com/nat-n/poethepoet) as simple task-runner within projects.
 
 > **Warning**
 > Make sure you use poetry>=1.3 for everything we show below.
@@ -143,7 +143,7 @@ Hence, we only want to install it once on our system and not in each project.
 
 ### Installation (using pipx)
 
-This installs jupyterlab and the `ipymp` extension globally on your system.
+This installs jupyterlab and the `ipympl` extension globally on your system.
 See more information about `ipympl` below.
 
 ```
@@ -169,11 +169,7 @@ For this, add `ipykernel` to your projects dev-dependencies and run the followin
 poetry run python -m ipykernel install --user --name <name-of-your-project>
 ```
 
-If you are using the `ds-base` cookiecutter template, you can use the `poe` command to register a kernel pointing to the venv of your project:
-
-```
-poe conf_jupyter
-```
+If you are using the `ds-base` cookiecutter template, you can use the `poe conf_jupyter` command to register a kernel pointing to the venv of your project:
 
 In Jupyterlab, you can now select the kernel you just registered.
 
@@ -183,7 +179,7 @@ The `ipympl` extension is a great tool to use matplotlib in Jupyterlab.
 It allows you to zoom and pan in the plots created in your notebook (https://github.com/matplotlib/ipympl).
 
 To make this possible, the extension has two components:
-A Jupyterlab extension and a python package.
+A Jupyterlab extension (running in the jupyterlab GUI) and a python package (running in the kernel).
 Because of our setup, Jupyterlab is running in a different Python environment than our kernels.
 In result, the `ipympl` extension is not available in our kernels, and we need to add it to the dev-dependencies of our projects.
 
@@ -191,10 +187,10 @@ In this step we need to be extremely careful to pick the exact same version of t
 In case you run into problems (i.e. the plots are not showing), you should first figure our which version of `ipympl` is installed in your Jupyterlab environment and which is installed in your kernel environment.
 Then you should make sure that both versions are the same.
 
-For this, start the default kernel of your jupyterlab installation (usually called Python 3 (ipykernel)) and `import ipympl; print(ipympl.__version__)`.
+For this, start the default kernel of your jupyterlab installation (usually called `Python 3 (ipykernel)`) and then run `import ipympl; print(ipympl.__version__)` in a cell.
 Then repeat the same in the kernel of your project.
 
-If the versions are different, we usually recommend to update the `ipympl` version in both environments to the latest one.
+If the versions are different, we usually recommend updating the `ipympl` version in both environments to the latest version.
 For your global installation run:
     
 ```
@@ -208,6 +204,8 @@ poetry add ipympl@latest --group dev
 ```
 
 Then restart jupyterlab and your kernel and check if the versions are now the same and if the plots are showing.
+If not, you might run into a different issue.
+Check the browsers javascript console for errors and head over to the [ipympl github page](https://github.com/matplotlib/ipympl) for more information.
 
 #### Maintaining multiple versions of ipympl
 
@@ -238,7 +236,7 @@ pipx install black
 In case you don't use a command often enough to warrant a global installation, you can also use `pipx run` to run a command in a temporary environment:
 
 
-For example: Cookiecutter (project template generator):
+For example, Cookiecutter (project template generator):
     
 ```
 pipx run cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="ds-base"
@@ -279,11 +277,11 @@ Or use the jupyterlab kernel registered above.
 
 # IDE Integration
 
-We recommend to use PyCharm (you can get the Pro-version, if you have an university email address) as your IDE in most cases.
+We recommend to use PyCharm (you can get the Pro-version, if you have a university email address) as your IDE in most cases.
 For smaller Projects, you can also use VSCode.
 
 Don't write large amounts of code in Jupyterlab!
 
 For both VSCode and PyCharm, you need to specify the path to the python interpreter.
 After running `poetry install`, use `poetry env info --path` to get the path to the python interpreter.
-Then use this path in your IDE.
+Then use this path to configure your IDE.
