@@ -33,9 +33,18 @@ def validate_project_slug():
         )
 
 
+def configure_python_env():
+    """Configure the Python environment for poetry."""
+    python_path = "{{ cookiecutter.python_path }}"
+    if python_path != "default":
+        subprocess.run(["poetry", "env", "use", python_path])
+
+
 if __name__ == "__main__":
     # Validate project slug
     validate_project_slug()
+    # Configure Python environment
+    configure_python_env()
     # Add custom configs
     configure_venv_folder()
     # Run Poetry check
