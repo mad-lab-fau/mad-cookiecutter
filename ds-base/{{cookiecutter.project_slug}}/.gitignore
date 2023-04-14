@@ -241,3 +241,6 @@ data
 # We are using jupytext and hence do not want to commit the notebooks
 experiments/**/*.ipynb
 {% endif %}
+
+# Pyenv
+.python-version
