@@ -297,3 +297,34 @@ Don't write large amounts of code in Jupyterlab!
 For both VSCode and PyCharm, you need to specify the path to the python interpreter.
 After running `poetry install`, use `poetry env info --path` to get the path to the python interpreter.
 Then use this path to configure your IDE.
+
+
+# Notebook Debugging
+
+One of the biggest pain-points of the Jupyter Lab/Notebook + IDE on the side development approach is that you can not easily debug into your library code when executing cells in Jupyter.
+There are two approaches on how to gain some of this ability.
+Both of them are only described for PyCharm, but similar things should work in other IDEs
+
+## Connecting to a remote debugging process
+
+WARNING: I could never get this method to work on Linux!
+
+In PyCharm using `Run -> Attach to running process` you should be able to select a currently running ipython/jupyter kernel.
+When executing code in the kernel (i.e. running code in your notebook in the browser), it will be traced by the PyCharm debugger.
+You should now be able to set breakpoints in code that is imported by the notebook.
+
+## Executing the Notebook in the IDE directly
+
+Using PyCharms Jupyter integration, you can execute your notebook inside the IDE and debugging "just works".
+However, if you followed the Jupyter setup in this guide, PyCharm will complain that "Jupyter is not installed".
+To fix this, we will connect PyCharm to our external jupyter installation.
+
+Under `Languages & Frameworks -> Jupyter -> Jupyter Servers` you can set up a `Configured Server`.
+For this start `jupyter lab` in the commandline like you usually would and check the output.
+In your CLI there should be a localhost-link (including an access token).
+Copy this over into the PyCharm config.
+PyCharm will now use your Jupyter installation to run Notebooks.
+Just remember, that you need to start the server in the commandline first, before using notebooks in the IDE.
+
+I personally use a workflow, where I use the browser based jupyter lab most of the time, but when I need complicated debugging, I just open the notebook in PyCharm.
+
