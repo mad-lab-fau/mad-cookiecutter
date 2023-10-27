@@ -1,13 +1,13 @@
 # Python Setup Tips (Spring 2023)
 
 > **Note**
-> This is an oppinioated guide assuming basic knowledge of Python and the command line.
+> This is an oppinionated guide assuming basic knowledge of Python and the command line.
 > Many recommendations also assume that you are planning to work with multiple large Python projects and might be overkill, for very simple Python setups.
 ## Dependency Management
 
 Dependency management (i.e. keeping track of which packages are required for your project) is extremely important to ensure reusability and reproducibility of your code. 
 To make this easier, you should create a new virtual environment for each project and use a tool to manage the dependencies of that environment.
-We recommend using [poetry](https://python-poetry.org/) for this purpose (See more below).
+We recommend using [poetry](https://python-poetry.org/) for this purpose (See more [below](#poetry)).
 
 ## Python Versions and Python Interpreters
 
@@ -51,6 +51,12 @@ pyenv local 3.8.5
 
 Note, this creates a new file called `.python-version` in your project folder.
 You might want to add this file to your `.gitignore` file.
+
+Alternatively you can also set the global Python version to the one you just installed:
+
+```bash
+pyenv global 3.8.5
+```
 
 If you have configured the `virtualenvs.prefer-active-python` setting of poetry to `true`, poetry will automatically use the Python version you just installed.
 
@@ -110,6 +116,7 @@ When these tools don't have a dedicated installer, and you just install them usi
 
 Hence, we recommend using [pipx](https://pypa.github.io/pipx/) to install these tools.
 
+
 ## Poetry
 
 We use poetry to manage our dependencies and to create our Python packages.
@@ -127,6 +134,17 @@ This allows you to use the `poetry` and the `poe` command everywhere on your sys
 pipx install poetry
 pipx inject poetry poethepoet --include-apps
 ```
+> **Note**
+> If you have problems getting `pipx` to work, try installing it with your system's package manager instead of `pip` and then [set the environment variable](https://phoenixnap.com/kb/linux-set-environment-variable#ftoc-heading-9) `PIPX_DEFAULT_PYTHON` to point to your `pyenv` Python executable (or use the `--python` flag when installing with `pipx`).
+> Now you should check that the default Python executable used by `pipx` is set to the Python executable from `pyenv`:
+> ```
+> pipx install --help
+> ```
+> Otherwise, you can specify the Python executable for each install (assuming `python` is already set to the `pyenv` one):
+>
+> ```bash
+> pipx install poetry --python $(which python)
+> ```
 
 Afterwards, you might want to enable tab completion for poetry and poethepoet:
 
@@ -181,7 +199,7 @@ For this, add `ipykernel` to your projects dev-dependencies and run the followin
 poetry run python -m ipykernel install --user --name <name-of-your-project>
 ```
 
-If you are using the `ds-base` cookiecutter template, you can use the `poe conf_jupyter` command to register a kernel pointing to the venv of your project:
+If you are using the `ds-base` cookiecutter template, you can use the `poe conf_jupyter` command to register a kernel pointing to the venv of your project.
 
 In Jupyterlab, you can now select the kernel you just registered.
 
