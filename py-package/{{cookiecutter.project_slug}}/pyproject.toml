@@ -13,35 +13,16 @@ python = "{{cookiecutter.python_version}}"
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.black]
-line-length = 120
-target-version = "py38"
-exclude = '''
-(
-  /(
-      \.eggs         # exclude a few common directories in the
-    | \.git          # root of the project
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | _build
-    | docs
-    | build
-    | dist
-    | \.virtual_documents
-  )/
-)
-'''
-
 [tool.poe.tasks]
-_format_black = "black ."
-_format_ruff = "ruff . --fix-only --exit-zero"
-format = ["_format_black", "_format_ruff", "_format_black"]
-lint = { cmd = "ruff {{cookiecutter.project_slug}} --fix", help = "Lint all files with ruff." }
-_lint_ci = "ruff {{cookiecutter.project_slug}} --format=github"
-_check_black = "black . --check"
-ci_check = { sequence = ["_check_black", "_lint_ci"], help = "Check all potential format and linting issues." }
+_format = "ruff format ."
+_auto_fix = "ruff . --fix-only --show-fixes --exit-zero"
+_auto_fix_unsafe = "ruff . --fix-only --show-fixes --exit-zero --unsafe-fixes"
+format = ["_auto_fix", "_format"]
+format_unsafe = ["_auto_fix_unsafe", "_format"]
+lint = { cmd = "ruff gaitlink --fix", help = "Lint all files with ruff." }
+_lint_ci = "ruff gaitlink --output-format=github"
+_check_format = "ruff format . --check"
+ci_check = { sequence = ["_check_format", "_lint_ci"], help = "Check all potential format and linting issues." }
 test = { cmd = "pytest --cov={{cookiecutter.project_slug}} --cov-report=term-missing --cov-report=xml", help = "Run Pytest with coverage." }
 docs = { "script" = "_tasks:task_docs()",  help = "Build the html docs using Sphinx." }
 version = { script = "_tasks:task_update_version()" }

@@ -14,7 +14,7 @@ def install_default_deps():
 
     We do that in the hook file to get the latest version for every new project.
     """
-    dev_deps = ["black", "poethepoet", "pytest", "pytest-cov", "ipykernel", "ruff"]
+    dev_deps = ["poethepoet", "pytest", "pytest-cov", "ipykernel", "ruff"]
 
     if "{{cookiecutter.ipympl_version}}" == "latest":
         dev_deps.append("ipympl@latest")
