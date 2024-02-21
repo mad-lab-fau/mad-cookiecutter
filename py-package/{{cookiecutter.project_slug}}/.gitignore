@@ -238,3 +238,6 @@ $RECYCLE.BIN/
 # Pyenv
 .python-version
 
+# debug folder
+_debug
+

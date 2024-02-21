@@ -244,3 +244,6 @@ experiments/**/*.ipynb
 
 # Pyenv
 .python-version
+
+# debug folder
+_debug
