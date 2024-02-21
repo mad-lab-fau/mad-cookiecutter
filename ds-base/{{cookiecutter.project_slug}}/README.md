@@ -112,7 +112,7 @@ from helper import ...
 To ensure consistent code structure this project uses prospector, black, and ruff to automatically check (and fix) the code format.
 
 ```
-poe format  # runs black and ruff with the autofix flag
+poe format  # runs ruff format and ruff lint with the autofix flag
 poe lint # runs ruff without autofix (will show issues that can not automatically be fixed)
 ```
 
