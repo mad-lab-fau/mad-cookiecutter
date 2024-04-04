@@ -1,6 +1,14 @@
 line-length = 120
 target-version = "py39"
 
+exclude = [
+    "doc/sphinxext/*.py",
+    "doc/build/*.py",
+    "doc/temp/*.py",
+    ".eggs/*.py",
+]
+
+[lint]
 select = [
     # pyflakes
     "F",
@@ -105,15 +113,7 @@ ignore = [
 ]
 
 
-exclude = [
-    "doc/sphinxext/*.py",
-    "doc/build/*.py",
-    "doc/temp/*.py",
-    ".eggs/*.py",
-]
-
-
-[pydocstyle]
+[lint.pydocstyle]
 convention = "numpy"
 
 [format]
