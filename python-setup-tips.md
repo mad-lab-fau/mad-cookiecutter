@@ -290,7 +290,7 @@ cd base
 # Adapt this for windows/when using a different way of managing python versions
 poetry env use $(pyenv shell 3.8.5; pyenv which python)  
 
-poery add ipykernel --group dev  # If you need a kernel for jupyterlab
+poetry add ipykernel --group dev  # If you need a kernel for jupyterlab
 python -m ipykernel install --user --name base
 
 poetry add numpy pandas matplotlib seaborn # Add your favorite packages
