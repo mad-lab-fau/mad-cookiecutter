@@ -1,0 +1,7 @@
+version = 1
+requires-python = ">=3.7, <4.0"
+
+[[package]]
+name = "mad-cookiecutter"
+version = "0.1.0"
+source = { editable = "." }
