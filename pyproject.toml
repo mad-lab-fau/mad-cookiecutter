@@ -3,22 +3,24 @@ authors = [
     {name = "Arne Küderle", email = "a.kuederle@gmail.com"},
 ]
 license = {text = "MIT"}
-requires-python = "<4.0,>=3.7"
+requires-python = ">=3.11"
 dependencies = []
 name = "mad-cookiecutter"
 version = "0.1.0"
 description = "Base Project templates for the MaD-Lab"
 
-[dependency-groups]
-dev = [
-    "cookiecutter<2.0.0,>=1.7.3",
+[tool.bumpversion]
+current_version = "0.1.0"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = "version = \"{current_version}\""
+replace = "version = \"{new_version}\""
+
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.9.1",
+    "cookiecutter>=2.6.0",
 ]
-
-
-[tool.pdm.build]
-includes = []
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
-
 

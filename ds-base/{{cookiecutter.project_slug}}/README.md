@@ -24,7 +24,7 @@
 ├── data  # The main data folder. This is ignored in the `.gitignore` by default.
 |
 |   pyproject.toml  # The required python dependencies for the project
-|   poetry.lock  # The frozen python dependencies to reproduce exact results
+|   uv.lock  # The frozen python dependencies to reproduce exact results
 |
 ```
 
@@ -34,16 +34,21 @@ This project was created using the mad-cookiecutter ds-base template.
 
 To work with the project you need to install:
 
-- [poetry](https://python-poetry.org/docs/#installation)
-- [poethepoet](https://github.com/nat-n/poethepoet) in your global python env (`pip install poethepoet`)
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-Afterwards run:
+Afterwards run use uv to install [poethepot](`https://poethepoet.natn.io`):
 
 ```
-poetry install
+uv tool install poethepoet
 ```
 
-Then you can create a new experiment using:
+Then you can install the project dependencies using:
+
+```
+uv sync
+```
+
+And create a new experiment using:
 
 ```
 poe experiment experiment_name
@@ -52,9 +57,9 @@ poe experiment experiment_name
 
 ### Dependency management
 
-All dependencies are manged using `poetry`.
-Poetry will automatically create a new venv for the project, when you run `poetry install`.
-Check out the [documentation](https://python-poetry.org/docs/basic-usage/) on how to add and remove dependencies.
+All dependencies are manged using `uv`.
+uv will automatically create a new venv for the project, when you run `uv sync`.
+Check out the [documentation](https://docs.astral.sh/uv/) on how to add and remove dependencies.
 
 
 ### Jupyter Notebooks

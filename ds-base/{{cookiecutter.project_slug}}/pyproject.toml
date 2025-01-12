@@ -1,22 +1,13 @@
-[tool.poetry]
+[project]
+authors = [
+    {name = "{{cookiecutter.your_name}}", email = "{{cookiecutter.email}}"},
+]
+requires-python = "{{cookiecutter.suported_python_version}}"
+dependencies = []
 name = "{{cookiecutter.project_slug}}"
-version = "0.1.0"
+version = "{{cookiecutter.version}}"  # Don't modify this line, it is managed by bumpversion
 description = "{{cookiecutter.project_short_description}}"
-authors = ["{{cookiecutter.your_name}} <{{cookiecutter.email}}>"]
-license = "MIT"
-readme = "README.md"
 
-[tool.poetry.dependencies]
-python = "{{cookiecutter.python_version}}"
-
-[tool.poetry.group.dev.dependencies]
-{% if cookiecutter.ipympl_version != "latest" %}
-ipympl = "{{cookiecutter.ipympl_version}}"
-{% endif %}
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
 
 {% if cookiecutter.notebook_handling == "jupytext" %}
 [tool.jupytext]
@@ -34,9 +25,14 @@ _lint_ci = "ruff check {{cookiecutter.project_slug}} --output-format=github"
 _check_format = "ruff format . --check"
 ci_check = { sequence = ["_check_format", "_lint_ci"], help = "Check all potential format and linting issues." }
 test = { cmd = "pytest --cov={{cookiecutter.project_slug}} --cov-report=term-missing --cov-report=xml", help = "Run Pytest with coverage." }
-version = { script = "_tasks:task_update_version()" }
+version = { cmd = "uvx bump-my-version" }
 conf_jupyter = { cmd = "python -m ipykernel install --user --name {{cookiecutter.project_slug}}", help = "Add a new jupyter kernel for the project." }
 {% if cookiecutter.notebook_handling == "nbstripout" %}conf_nbstripout = { cmd = "nbstripout --install", help = "Enable the nbstripout pre commit hook."}
 {% elif cookiecutter.notebook_handling == "jupytext" %}sync_notebooks = { cmd = "jupytext --sync 'experiments/**/notebooks/*.*py*' --set-kernel={{cookiecutter.project_slug}}", help = "Manually sync all notebooks with their jupytext counter part."}{% endif %}
 remove_jupyter = { cmd = "jupyter kernelspec uninstall {{cookiecutter.project_slug}}", help = "Remove the project specific jupyter kernel."}
 experiment = { script = "_tasks:task_new_experiment()", help = "Create the boilerplate for a new experiment in the experiment subfolder."}
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
