@@ -6,8 +6,8 @@
     "project_repo": "https://github.com/mad-lab-fau/{{ cookiecutter.project_slug }}",
     "project_short_description": "",
     "version": "0.1.0",
-    "python_version": ">=3.8,<4.0",
+    "supported_python_version": ">=3.10,<4.0",
+    "used_python_version": "3.10",
     "python_path": "default",
-    "force_venv_in_folder": ["no", "yes"],
     "_copy_without_render": ["docs/templates/*", ".github/*"]
 }

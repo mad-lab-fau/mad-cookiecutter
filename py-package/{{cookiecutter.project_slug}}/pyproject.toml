@@ -1,17 +1,57 @@
-[tool.poetry]
+[project]
 name = "{{cookiecutter.project_slug}}"
-version = "0.1.0"
+version = "{{cookiecutter.version}}"
 description = "{{cookiecutter.project_short_description}}"
-authors = ["{{cookiecutter.your_name}} <{{cookiecutter.email}}>"]
+authors = [
+    {name = "{{cookiecutter.your_name}}", email = "{{cookiecutter.email}}"},
+]
+requires-python = "{{cookiecutter.supported_python_version}}"
+dependencies = []
 license = "MIT"
 readme = "README.md"
 
-[tool.poetry.dependencies]
-python = "{{cookiecutter.python_version}}"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+[tool.hatch.build.targets.sdist]
+include = ["src/{{cookiecutter.project_slug}}"]
+
+[tool.hatch.build.targets.wheel]
+include = ["src/{{cookiecutter.project_slug}}"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src/{{cookiecutter.project_slug}}" = "{{cookiecutter.project_slug}}"
+
+[tool.black]
+line-length = 120
+target-version = ['py310']
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | docs
+    | build
+    | dist
+    | \.virtual_documents
+    | \.ipynb_checkpoints
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 120
+skip_gitignore = true
 
 [tool.poe.tasks]
 _format = "ruff format ."
@@ -19,8 +59,8 @@ _auto_fix = "ruff check . --fix-only --show-fixes --exit-zero"
 _auto_fix_unsafe = "ruff check . --fix-only --show-fixes --exit-zero --unsafe-fixes"
 format = ["_auto_fix", "_format"]
 format_unsafe = ["_auto_fix_unsafe", "_format"]
-lint = { cmd = "ruff check {{cookiecutter.project_slug}} --fix", help = "Lint all files with ruff." }
-_lint_ci = "ruff check {{cookiecutter.project_slug}} --output-format=github"
+lint = { cmd = "ruff check src --fix", help = "Lint all files with ruff." }
+_lint_ci = "ruff check src --output-format=github"
 _check_format = "ruff format . --check"
 ci_check = { sequence = ["_check_format", "_lint_ci"], help = "Check all potential format and linting issues." }
 test = { cmd = "pytest --cov={{cookiecutter.project_slug}} --cov-report=term-missing --cov-report=xml", help = "Run Pytest with coverage." }

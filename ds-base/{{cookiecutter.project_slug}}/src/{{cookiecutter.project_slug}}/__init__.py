@@ -3,8 +3,7 @@
 
 from pathlib import Path
 
-# Do not change this line manually. It is automatically updated by bumpversion
-__version__ = "{{cookiecutter.version}}" 
+__version__ = "{{cookiecutter.version}}"
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 

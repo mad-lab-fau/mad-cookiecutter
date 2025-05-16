@@ -72,7 +72,7 @@ if __name__ == "__main__":
     configure_python_env()
     # Create data folder (We need to do that here, because the folder is ignored by git)
     Path("./data").mkdir()
-    # Run Poetry check
+    # Run uv check
     run_subprocess(["uv", "sync"])
     # Update all dependencies
     install_default_deps()
