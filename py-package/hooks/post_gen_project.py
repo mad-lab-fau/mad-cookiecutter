@@ -3,12 +3,6 @@ import json
 from pathlib import Path
 import subprocess
 
-
-def configure_venv_folder():
-    if "{{ cookiecutter.force_venv_in_folder }}" == "yes":
-        subprocess.run(["poetry", "config", "virtualenvs.in-project", "true", "--local"])
-
-
 def install_default_deps():
     """Install some basic deps.
 
@@ -45,9 +39,7 @@ if __name__ == "__main__":
     validate_project_slug()
     # Configure Python environment
     configure_python_env()
-    # Add custom configs
-    configure_venv_folder()
-    # Run Poetry check
-    subprocess.run(["poetry", "check"])
+    # Run uv check
+    subprocess.run(["uv", "sync"])
     # Update all dependencies
     install_default_deps()

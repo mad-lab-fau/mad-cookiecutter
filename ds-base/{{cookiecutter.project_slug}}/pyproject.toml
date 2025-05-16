@@ -1,27 +1,22 @@
-[tool.poetry]
+[project]
 name = "{{cookiecutter.project_slug}}"
-version = "0.1.0"
+version = "{{cookiecutter.version}}" # Don't modify this line, it is managed by "uv version"
 description = "{{cookiecutter.project_short_description}}"
-authors = ["{{cookiecutter.your_name}} <{{cookiecutter.email}}>"]
-license = "MIT"
-readme = "README.md"
+authors = [
+    {name = "{{cookiecutter.your_name}}", email = "{{cookiecutter.email}}"},
+]
+requires-python = "{{cookiecutter.supported_python_version}}"
+dependencies = []
 
-[tool.poetry.dependencies]
-python = "{{cookiecutter.python_version}}"
-
-[tool.poetry.group.dev.dependencies]
-{% if cookiecutter.ipympl_version != "latest" %}
-ipympl = "{{cookiecutter.ipympl_version}}"
-{% endif %}
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
 
 {% if cookiecutter.notebook_handling == "jupytext" %}
 [tool.jupytext]
 formats = "ipynb,py:percent"
 {% endif %}
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.poe.tasks]
 _format = "ruff format ."
@@ -29,8 +24,8 @@ _auto_fix = "ruff check . --fix-only --show-fixes --exit-zero"
 _auto_fix_unsafe = "ruff check . --fix-only --show-fixes --exit-zero --unsafe-fixes"
 format = ["_auto_fix", "_format"]
 format_unsafe = ["_auto_fix_unsafe", "_format"]
-lint = { cmd = "ruff check {{cookiecutter.project_slug}} --fix", help = "Lint all files with ruff." }
-_lint_ci = "ruff check {{cookiecutter.project_slug}} --output-format=github"
+lint = { cmd = "ruff check src --fix", help = "Lint all files with ruff." }
+_lint_ci = "ruff check src --output-format=github"
 _check_format = "ruff format . --check"
 ci_check = { sequence = ["_check_format", "_lint_ci"], help = "Check all potential format and linting issues." }
 test = { cmd = "pytest --cov={{cookiecutter.project_slug}} --cov-report=term-missing --cov-report=xml", help = "Run Pytest with coverage." }
@@ -40,3 +35,4 @@ conf_jupyter = { cmd = "python -m ipykernel install --user --name {{cookiecutter
 {% elif cookiecutter.notebook_handling == "jupytext" %}sync_notebooks = { cmd = "jupytext --sync 'experiments/**/notebooks/*.*py*' --set-kernel={{cookiecutter.project_slug}}", help = "Manually sync all notebooks with their jupytext counter part."}{% endif %}
 remove_jupyter = { cmd = "jupyter kernelspec uninstall {{cookiecutter.project_slug}}", help = "Remove the project specific jupyter kernel."}
 experiment = { script = "_tasks:task_new_experiment()", help = "Create the boilerplate for a new experiment in the experiment subfolder."}
+

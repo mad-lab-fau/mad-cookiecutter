@@ -5,9 +5,8 @@
     "email": "",
     "project_short_description": "",
     "version": "0.1.0",
-    "python_version": ">=3.8,<4.0",
-    "python_path": "default",
-    "force_venv_in_folder": ["no", "yes"],
+    "supported_python_version": ">=3.10,<4.0",
+    "used_python_version": "3.10",
     "ipympl_version": "latest",
     "notebook_handling": ["None", "nbstripout", "jupytext"],
     "_copy_without_render": [".github/*"]
