@@ -25,34 +25,6 @@ include = ["src/{{cookiecutter.project_slug}}"]
 [tool.hatch.build.targets.wheel.sources]
 "src/{{cookiecutter.project_slug}}" = "{{cookiecutter.project_slug}}"
 
-[tool.black]
-line-length = 120
-target-version = ['py310']
-exclude = '''
-(
-  /(
-      \.eggs         # exclude a few common directories in the
-    | \.git          # root of the project
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | _build
-    | docs
-    | build
-    | dist
-    | \.virtual_documents
-    | \.ipynb_checkpoints
-  )/
-)
-'''
-
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 120
-skip_gitignore = true
-
 [tool.poe.tasks]
 _format = "ruff format ."
 _auto_fix = "ruff check . --fix-only --show-fixes --exit-zero"

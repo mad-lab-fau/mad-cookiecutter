@@ -21,41 +21,15 @@ First install:
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
 - [poethepoet](https://github.com/nat-n/poethepoet) by running `uv tool install poethepoet`
 
-Then find the Python executable you want to use for your project.
-
-When using pyenv, you can use:
-
-```bash
-# For example for Python 3.10
-echo $(pyenv shell 3.10; pyenv which python)
-```
-
-On Windows using PowerShell and the `py` launcher:
-
-```powershell
-# For example for Python 3.10
-echo $(py -3.10 -c 'import sys; print(sys.executable)')
-```
-
-When using conda, activate the environment of your base interpreter and run:
-
-```bash
-python -c 'import sys; print(sys.executable)'
-```
-
-Copy the full path for the next step!
-
-
 Then run:
 
 ```bash
 cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="ds-base"
 # Answer all the prompts
-# For python_path, use the path you copied in the previous step
 cd my_project_name
 git init
 git commit -A -m'Initialized project based on mad-ds-base template'
-uv sync --dev
+uv sync
 ```
 
 After creating a new project, check the README of your new project file.
@@ -66,7 +40,7 @@ It contains some basic information on how to get started.
 - Dependency and venv management using [`uv`](https://docs.astral.sh/uv/)
 - Installable core package for your algorithms
 - Opinionated folder structure for data and experiments
-- Automatic setup of formatting and lint tools ([`black`](https://github.com/psf/black), [`ruff`](https://docs.astral.sh/ruff/))
+- Automatic setup of formatting and lint tools using [`ruff`](https://docs.astral.sh/ruff/)
 - Support for either [`nbstripout`](https://github.com/kynan/nbstripout) or [`jupytext`](https://jupytext.readthedocs.io/en/latest/) to handle notebooks in git
 - Basic CI configuration for GitHub
 - Commandline tools using [`poethepoet`]((https://github.com/nat-n/poethepoet)):
@@ -80,41 +54,16 @@ First install:
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
 - [poethepoet](https://github.com/nat-n/poethepoet) by running `uv tool install poethepoet`
 
-Then find the Python executable you want to use for your project.
-
-When using pyenv, you can use:
-
-```bash
-# For example for Python 3.10
-echo $(pyenv shell 3.10; pyenv which python)
-```
-
-On Windows using PowerShell and the `py` launcher:
-
-```powershell
-# For example for Python 3.10
-echo $(py -3.10 -c 'import sys; print(sys.executable)')
-```
-
-When using conda, activate the environment of your base interpreter and run:
-
-```bash
-python -c 'import sys; print(sys.executable)'
-```
-
-Copy the full path for the next step!
-
 
 Then run:
 
 ```bash
 cookiecutter gh:mad-lab-fau/mad-cookiecutter --directory="py-package"
 # Answer all the prompts
-# For python_path, use the path you copied in the previous step
 cd my_project_name
 git init
 git commit -A -m'Initialized project based on mad-py-package template'
-uv sync --dev
+uv sync
 ```
 
 Note, that you should specify a repo URL, even if you did not have a git repo yet.
@@ -123,7 +72,7 @@ At least specify `github.com` or `mad-srv.informatik.uni-erlangen.de` as this in
 ### Features
 
 - Dependency and venv management using [`uv`](https://docs.astral.sh/uv/)
-- Automatic setup of formatting and lint tools ([`black`](https://github.com/psf/black), [`ruff`](https://docs.astral.sh/ruff/))
+- Automatic setup of formatting and lint tools using [`ruff`](https://docs.astral.sh/ruff/)
 - Basic doc structure and templates
 - Basic CI configuration for GitHub
 

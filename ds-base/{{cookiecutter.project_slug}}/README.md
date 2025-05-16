@@ -32,11 +32,11 @@
 
 This project was created using the mad-cookiecutter ds-base template.
 
-To work with the project you need to install:
+To work with the project, you need to install:
 
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-Afterwards run use uv to install [poethepot](`https://poethepoet.natn.io`):
+Afterwards run use uv to install [poethepoet](`https://poethepoet.natn.io`):
 
 ```
 uv tool install poethepoet
@@ -114,7 +114,7 @@ from helper import ...
 
 ### Format and Linting
 
-To ensure consistent code structure this project uses prospector, black, and ruff to automatically check (and fix) the code format.
+To ensure consistent code structure, this project uses ruff to automatically check (and fix) the code format.
 
 ```
 poe format  # runs ruff format and ruff lint with the autofix flag
