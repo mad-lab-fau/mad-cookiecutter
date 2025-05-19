@@ -1,9 +1,9 @@
-import platform
 import re
 import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import Sequence
 
 HERE = Path(__file__).parent
 
@@ -49,7 +49,7 @@ def update_version(version: Sequence[str]):
             .split(" ", 1)[1:][0]
         )
 
-        update_version_strings(HERE.joinpath("{{cookiecutter.project_slug}}/__init__.py"), new_version)
+        update_version_strings(HERE.joinpath("src/{{cookiecutter.project_slug}}/__init__.py"), new_version)
 
 
 def task_update_version():
