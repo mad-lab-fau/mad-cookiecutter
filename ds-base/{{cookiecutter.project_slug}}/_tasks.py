@@ -8,6 +8,8 @@ HERE = Path(__file__).parent
 
 
 def task_new_experiment():
+    if len(sys.argv) < 2:
+        raise ValueError("Please provide the name of the new experiment as an argument.")
     name = sys.argv[1]
     files = ["__init__.py", "helper/__init__.py", "notebooks/.gitkeep", "scripts/.gitkeep", "README.md"]
 
