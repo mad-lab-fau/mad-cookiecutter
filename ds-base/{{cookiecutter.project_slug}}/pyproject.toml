@@ -19,14 +19,14 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.poe.tasks]
-_format = "ruff format ."
-_auto_fix = "ruff check . --fix-only --show-fixes --exit-zero"
-_auto_fix_unsafe = "ruff check . --fix-only --show-fixes --exit-zero --unsafe-fixes"
+_format = "ruff format src"
+_auto_fix = "ruff check src --fix-only --show-fixes --exit-zero"
+_auto_fix_unsafe = "ruff check src --fix-only --show-fixes --exit-zero --unsafe-fixes"
 format = ["_auto_fix", "_format"]
 format_unsafe = ["_auto_fix_unsafe", "_format"]
 lint = { cmd = "ruff check src --fix", help = "Lint all files with ruff." }
 _lint_ci = "ruff check src --output-format=github"
-_check_format = "ruff format . --check"
+_check_format = "ruff format src --check"
 ci_check = { sequence = ["_check_format", "_lint_ci"], help = "Check all potential format and linting issues." }
 test = { cmd = "pytest --cov={{cookiecutter.project_slug}} --cov-report=term-missing --cov-report=xml", help = "Run Pytest with coverage." }
 version = { script = "_tasks:task_update_version()" }
