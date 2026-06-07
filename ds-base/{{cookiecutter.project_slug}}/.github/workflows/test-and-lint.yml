@@ -30,4 +30,4 @@ jobs:
         uv run poe ci_check
     - name: Testing
       run: |
-        poetry run poe test
+        uv run poe test

@@ -3,6 +3,15 @@ import json
 from pathlib import Path
 import subprocess
 
+def run_subprocess(command):
+    """Run a subprocess command and raise an error if it fails."""
+    result = subprocess.run(command, capture_output=True, text=True)
+    print(result.stdout)
+    print(result.stderr)
+    if result.returncode != 0:
+        raise subprocess.CalledProcessError(result.returncode, command, output=result.stdout, stderr=result.stderr)
+    return result
+
 def install_default_deps():
     """Install some basic deps.
 
@@ -11,7 +20,7 @@ def install_default_deps():
     dev_deps = ["poethepoet", "pytest", "pytest-cov", "ruff"]
     doc_deps = ["numpydoc", "sphinx", "sphinx-gallery", "recommonmark", "memory-profiler", "matplotlib", "toml"]
 
-    subprocess.run(["poetry", "add", "--lock", "--group", "dev", *dev_deps, *doc_deps])
+    run_subprocess(["uv", "add", "--group", "dev", *dev_deps, *doc_deps])
 
 
 def validate_project_slug():
@@ -28,10 +37,9 @@ def validate_project_slug():
 
 
 def configure_python_env():
-    """Configure the Python environment for poetry."""
-    python_path = "{{ cookiecutter.python_path }}"
-    if python_path != "default":
-        subprocess.run(["poetry", "env", "use", python_path])
+    """Configure the Python environment."""
+    python_version = "{{ cookiecutter.used_python_version }}"
+    run_subprocess(["uv", "python", "pin", python_version])
 
 
 if __name__ == "__main__":
@@ -40,6 +48,6 @@ if __name__ == "__main__":
     # Configure Python environment
     configure_python_env()
     # Run uv check
-    subprocess.run(["uv", "sync"])
+    run_subprocess(["uv", "sync"])
     # Update all dependencies
     install_default_deps()

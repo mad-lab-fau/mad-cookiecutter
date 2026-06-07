@@ -29,14 +29,14 @@ URL = "{{cookiecutter.project_repo}}"
 
 # -- Project information -----------------------------------------------------
 
-# Info from poetry config:
-info = toml.load("../pyproject.toml")["tool"]["poetry"]
+# Info from uv config:
+info = toml.load("../pyproject.toml")["project"]
 
 project = info["name"]
-author = ", ".join(info["authors"])
+author = ", ".join([k["name"] for k in info["authors"]])
 release = info["version"]
 
-copyright = "2021 - {}, MaD Lab, FAU".format(datetime.now().year)
+copyright = "{} - now, MaD Lab, FAU".format(datetime.now().year)
 
 # -- Copy the README and Changelog and fix image path --------------------------------------
 HERE = Path(__file__).parent
